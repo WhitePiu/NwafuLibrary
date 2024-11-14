@@ -5,36 +5,11 @@ type MenuItem = Required<MenuProps>['items'][number];
 
 export const menuListData: MenuItem[] = [
   {
-    key: 'sub1',
-    label: '使用说明',
-    icon: <MailOutlined />,
-    children: [
-      {
-        key: 'g1',
-        label: 'Item 1',
-        type: 'group',
-        children: [
-          { key: '1', label: 'Option 1' },
-          { key: '2', label: 'Option 2' },
-        ],
-      },
-      {
-        key: 'g2',
-        label: 'Item 2',
-        type: 'group',
-        children: [
-          { key: '3', label: 'Option 3' },
-          { key: '4', label: 'Option 4' },
-        ],
-      },
-    ],
-  },
-  {
-    key: 'sub2',
+    key: '/search',
     label: '图书查询',
     icon: <AppstoreOutlined />,
     children: [
-      { key: '5', label: 'Option 5' },
+      { key: '1', label: '查询' },
       { key: '6', label: 'Option 6' },
       {
         key: 'sub3',
@@ -74,7 +49,7 @@ export const menuListData: MenuItem[] = [
   },
   {
     key: 'sub8',
-    label: '座位预约',
+    label: '使用说明',
     icon: <SettingOutlined />,
   },
 ];

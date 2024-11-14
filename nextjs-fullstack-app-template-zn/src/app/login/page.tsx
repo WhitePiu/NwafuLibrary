@@ -15,13 +15,14 @@ type FieldType = {
 
 export default function page() {
 
+
   const router = useRouter();
 
   const onFinish: FormProps<FieldType>['onFinish'] = (value) => {
     const { studentId, password } = value
     if (+studentId === initUser.studentId && +password === initUser.password) {
       alert('登录成功')
-      router.push('/home')
+      router.push('/product')
     } else {
       onFinishFailed();
     }
@@ -29,7 +30,7 @@ export default function page() {
 
   const onFinishFailed = () => {
     // TODO: 开发修改
-    router.push('/home')
+    router.push('/product')
     // alert('登录失败')
   }
 

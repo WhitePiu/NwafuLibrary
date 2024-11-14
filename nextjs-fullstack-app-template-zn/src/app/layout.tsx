@@ -1,4 +1,5 @@
 import '@/assets/css/reset.css'
+import '@/assets/css/common.css'
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 
 

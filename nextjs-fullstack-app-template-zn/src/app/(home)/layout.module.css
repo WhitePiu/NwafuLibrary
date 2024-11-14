@@ -1,0 +1,23 @@
+.homeBox{
+  display: flex;
+}
+
+.userBox{
+  height: 50px; 
+  padding-left: 256px;
+  border-bottom: 1px solid #ccc;
+
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  text-align: center;
+  line-height: 50px;
+}
+
+.userInfo span{
+  padding: 0 20px 0 20px;
+}
+
+.menu{
+}
