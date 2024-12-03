@@ -5,7 +5,7 @@ import styles from './page.module.css'
 import bgimage from '@/assets/img/tushuguan.jpg'
 import { Form, Input, Checkbox, Button } from 'antd'
 import type { FormProps } from 'antd'
-import initUser from '@/assets/data/users.json'
+import initUser from '@/assets/data/login/users.json'
 
 type FieldType = {
   studentId: string;
@@ -22,7 +22,7 @@ export default function page() {
     const { studentId, password } = value
     if (+studentId === initUser.studentId && +password === initUser.password) {
       alert('登录成功')
-      router.push('/product')
+      router.push('/search')
     } else {
       onFinishFailed();
     }
@@ -30,7 +30,7 @@ export default function page() {
 
   const onFinishFailed = () => {
     // TODO: 开发修改
-    router.push('/product')
+    router.push('/search')
     // alert('登录失败')
   }
 

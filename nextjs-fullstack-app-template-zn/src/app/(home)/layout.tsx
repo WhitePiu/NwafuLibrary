@@ -21,7 +21,7 @@ export default function layout({
   
   const onClick = ({ item, key, keyPath, domEvent }) => {
     // keyPath是数组
-    router.push(keyPath[1])
+    router.push(keyPath[0])
   }
 
   return (
@@ -41,7 +41,7 @@ export default function layout({
       <div className={styles.homeBox}>
         <Menu
           onClick={onClick}
-          style={{ width: 256 }}
+          style={{ width: 156, minWidth: 156 }}
           defaultSelectedKeys={['1']}
           defaultOpenKeys={['sub1']}
           mode="inline"

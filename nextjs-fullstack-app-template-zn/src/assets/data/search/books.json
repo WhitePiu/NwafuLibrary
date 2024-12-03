@@ -8,7 +8,8 @@
     "price": 89.00,
     "rest": 5,
     "category": "计算机科学",
-    "img": "@/assets/img/book.jpg"
+    "img": "@/assets/img/book.jpg",
+    "type": 1
   },
   {
     "id": 2,
@@ -19,7 +20,8 @@
     "price": 128.00,
     "rest": 3,
     "category": "计算机科学",
-    "img": "@/assets/img/book.jpg"
+    "img": "@/assets/img/book.jpg",
+    "type": 1
   },
   {
     "id": 3,
@@ -30,7 +32,8 @@
     "price": 79.00,
     "rest": 7,
     "category": "编程语言",
-    "img": "@/assets/img/book.jpg"
+    "img": "@/assets/img/book.jpg",
+    "type": 1
   },
   {
     "id": 4,
@@ -41,7 +44,8 @@
     "price": 68.00,
     "rest": 6,
     "category": "软件工程",
-    "img": "@/assets/img/book.jpg"
+    "img": "@/assets/img/book.jpg",
+    "type": 1
   },
   {
     "id": 5,
@@ -52,7 +56,8 @@
     "price": 85.00,
     "rest": 4,
     "category": "数据库",
-    "img": "@/assets/img/book.jpg"
+    "img": "@/assets/img/book.jpg",
+    "type": 1
   },
   {
     "id": 6,
@@ -63,7 +68,8 @@
     "price": 75.00,
     "rest": 8,
     "category": "计算机网络",
-    "img": "@/assets/img/book.jpg"
+    "img": "@/assets/img/book.jpg",
+    "type": 0
   },
   {
     "id": 7,
@@ -74,7 +80,8 @@
     "price": 80.00,
     "rest": 5,
     "category": "操作系统",
-    "img": "@/assets/img/book.jpg"
+    "img": "@/assets/img/book.jpg",
+    "type": 0
   },
   {
     "id": 8,
@@ -85,7 +92,8 @@
     "price": 45.00,
     "rest": 9,
     "category": "软件工程",
-    "img": "@/assets/img/book.jpg"
+    "img": "@/assets/img/book.jpg",
+    "type": 0
   },
   {
     "id": 9,
@@ -96,7 +104,8 @@
     "price": 98.00,
     "rest": 6,
     "category": "软件工程",
-    "img": "@/assets/img/book.jpg"
+    "img": "@/assets/img/book.jpg",
+    "type": 1
   },
   {
     "id": 10,
@@ -107,6 +116,67 @@
     "price": 110.00,
     "rest": 2,
     "category": "计算机科学",
-    "img": "@/assets/img/book.jpg"
+    "img": "@/assets/img/book.jpg",
+    "type": 0
+  },
+  {
+    "id": 11,
+    "title": "人工智能：复杂问题解决的结构和策略",
+    "author": "George F. Luger",
+    "publisher": "机械工业出版社",
+    "description": "本书全面介绍了人工智能的基本原理和策略。",
+    "price": 99.00,
+    "rest": 7,
+    "category": "人工智能",
+    "img": "@/assets/img/book.jpg",
+    "type": 1
+  },
+  {
+    "id": 12,
+    "title": "软件工程：实践者的研究方法",
+    "author": "Roger S. Pressman",
+    "publisher": "清华大学出版社",
+    "description": "这是一本介绍软件工程实践和方法的书，适合软件工程专业的读者。",
+    "price": 130.00,
+    "rest": 4,
+    "category": "软件工程",
+    "img": "@/assets/img/book.jpg",
+    "type": 1
+  },
+  {
+    "id": 13,
+    "title": "Python编程：从入门到实践",
+    "author": "Eric Matthes",
+    "publisher": "人民邮电出版社",
+    "description": "本书详细介绍了Python编程语言的核心概念和高级应用。",
+    "price": 85.00,
+    "rest": 6,
+    "category": "编程语言",
+    "img": "@/assets/img/book.jpg",
+    "type": 1
+  },
+  {
+    "id": 14,
+    "title": "数据结构与算法分析",
+    "author": "Clifford A. Shaffer",
+    "publisher": "机械工业出版社",
+    "description": "这是一本介绍数据结构和算法分析的书籍，适合有一定编程基础的读者。",
+    "price": 75.00,
+    "rest": 8,
+    "category": "计算机科学",
+    "img": "@/assets/img/book.jpg",
+    "type": 1
+  },
+  {
+    "id": 15,
+    "title": "计算机网络：自顶向下方法",
+    "author": "James F. Kurose",
+    "publisher": "清华大学出版社",
+    "description": "本书从网络应用的角度介绍了计算机网络的基本原理和实践。",
+    "price": 90.00,
+    "rest": 5,
+    "category": "计算机网络",
+    "img": "@/assets/img/book.jpg",
+    "type": 0
   }
 ]

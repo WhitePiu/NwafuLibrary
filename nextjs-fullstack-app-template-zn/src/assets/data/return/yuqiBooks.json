@@ -1,0 +1,62 @@
+[
+  {
+    "id": 6,
+    "title": "计算机网络",
+    "author": "Andrew S. Tanenbaum",
+    "publisher": "清华大学出版社",
+    "description": "这是一本介绍计算机网络原理和实践的书，适合计算机网络课程的教材。",
+    "price": 75.00,
+    "rest": 8,
+    "category": "计算机网络",
+    "img": "@/assets/img/book.jpg",
+    "type": 1
+  },
+  {
+    "id": 7,
+    "title": "操作系统概念",
+    "author": "Abraham Silberschatz",
+    "publisher": "机械工业出版社",
+    "description": "本书详细介绍了操作系统的基本原理和设计。",
+    "price": 80.00,
+    "rest": 5,
+    "category": "操作系统",
+    "img": "@/assets/img/book.jpg",
+    "type": 1
+  },
+  {
+    "id": 8,
+    "title": "人月神话",
+    "author": "Frederick P. Brooks Jr.",
+    "publisher": "清华大学出版社",
+    "description": "这是一本关于软件工程管理的经典著作，讨论了软件开发中的各种挑战。",
+    "price": 45.00,
+    "rest": 9,
+    "category": "软件工程",
+    "img": "@/assets/img/book.jpg",
+    "type": 1
+  },
+  {
+    "id": 9,
+    "title": "代码大全",
+    "author": "Steve McConnell",
+    "publisher": "人民邮电出版社",
+    "description": "本书提供了软件开发实践中的各种指导和建议。",
+    "price": 98.00,
+    "rest": 6,
+    "category": "软件工程",
+    "img": "@/assets/img/book.jpg",
+    "type": 1
+  },
+  {
+    "id": 10,
+    "title": "编译原理",
+    "author": "Alfred V. Aho",
+    "publisher": "机械工业出版社",
+    "description": "这是一本介绍编译器设计和实现的经典教材。",
+    "price": 110.00,
+    "rest": 2,
+    "category": "计算机科学",
+    "img": "@/assets/img/book.jpg",
+    "type": 1
+  }
+]

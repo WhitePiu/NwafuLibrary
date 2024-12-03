@@ -1,10 +1,10 @@
-.homeBox{
+.homeBox {
   display: flex;
 }
 
-.userBox{
-  height: 50px; 
-  padding-left: 256px;
+.userBox {
+  height: 50px;
+  padding-left: 156px;
   border-bottom: 1px solid #ccc;
 
   display: flex;
@@ -15,9 +15,9 @@
   line-height: 50px;
 }
 
-.userInfo span{
+.userInfo span {
   padding: 0 20px 0 20px;
 }
 
-.menu{
+.menu {
 }

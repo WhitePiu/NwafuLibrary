@@ -1,4 +1,4 @@
-.sanjiao::after{
+.sanjiao::after {
   content: "";
   width: 0;
   height: 0;
@@ -8,4 +8,8 @@
   border-left: 8px solid skyblue;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
+}
+
+.erjiPage {
+  flex: 1;
 }
