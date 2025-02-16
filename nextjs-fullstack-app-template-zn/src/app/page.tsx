@@ -2,13 +2,14 @@
 
 import Link from "next/link"
 import Image from "next/image"
+import axios from "axios"
 import NwaIco from '@/assets/img/xiaohui.jpg'
 import { Button, ConfigProvider, Timeline} from "antd"
 
 import styles from './page.module.css';
 
 export default function Page() {
-  console.log(NwaIco)
+
   return (
     <div className={styles.box}>
       <ConfigProvider

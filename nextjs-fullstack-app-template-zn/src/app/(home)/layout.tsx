@@ -42,8 +42,8 @@ export default function layout({
         <Menu
           onClick={onClick}
           style={{ width: 156, minWidth: 156 }}
-          defaultSelectedKeys={['1']}
-          defaultOpenKeys={['sub1']}
+          defaultSelectedKeys={['/search']}
+          defaultOpenKeys={['1']}
           mode="inline"
           items={menuListData}
           className={styles.menu}

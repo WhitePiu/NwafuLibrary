@@ -1,0 +1,38 @@
+.container{
+  display: flex;
+  margin: 40px 30px;
+  .rest{
+    width: fit-content;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #46cc03;
+    border-radius: 8px;
+
+    color: #46cc03;
+  }
+  .detailBox{
+    display: flex;
+    justify-content: space-between;
+    .head{
+      padding: 5px 0;
+      color: #ccc;
+      .text{
+        color: #000;
+      }
+    }
+  }
+  .description{
+    font-size: 12px;
+    line-height: 2;
+    letter-spacing: 2px;
+  }
+}
+
+.borrow{
+  margin-left: 30px;
+  .borrowHeader{
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+}

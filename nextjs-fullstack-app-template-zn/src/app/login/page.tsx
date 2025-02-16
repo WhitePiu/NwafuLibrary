@@ -6,6 +6,7 @@ import bgimage from '@/assets/img/tushuguan.jpg'
 import { Form, Input, Checkbox, Button } from 'antd'
 import type { FormProps } from 'antd'
 import initUser from '@/assets/data/login/users.json'
+import axios from 'axios'
 
 type FieldType = {
   studentId: string;
@@ -18,20 +19,28 @@ export default function page() {
 
   const router = useRouter();
 
-  const onFinish: FormProps<FieldType>['onFinish'] = (value) => {
+  const onFinish: FormProps<FieldType>['onFinish'] = async (value) => {
     const { studentId, password } = value
-    if (+studentId === initUser.studentId && +password === initUser.password) {
-      alert('登录成功')
+    const response = axios({
+      url: 'http://localhost:8080/user/login',
+      method: 'post',
+      data: {
+        studentId,
+        password
+      }
+    })
+
+    const {data} = await response;
+    if (data.code === 200) {
       router.push('/search')
     } else {
-      onFinishFailed();
+      onFinishFailed(data.message);
     }
   }
 
-  const onFinishFailed = () => {
+  const onFinishFailed = (errorMes) => {
     // TODO: 开发修改
-    router.push('/search')
-    // alert('登录失败')
+    alert(errorMes)
   }
 
   return (
