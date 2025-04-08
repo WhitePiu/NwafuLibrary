@@ -36,6 +36,9 @@ class UserController{
     const userMes = await UserService.getUserById(ctx.request.body.studentId);
     const password = md5Password(user.password);
 
+
+
+    // 没有token情况
     if (userMes[0].length && userMes[0][0].password === password) {
       ctx.body = {
         code: 200,
