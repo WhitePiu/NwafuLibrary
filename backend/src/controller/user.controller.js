@@ -1,5 +1,6 @@
 const UserService = require('../service/user.service');
 const md5Password = require('../utils/md5-password');
+const jwt = require('jsonwebtoken');
 
 class UserController{
   async create(ctx, next) {
@@ -36,25 +37,34 @@ class UserController{
     const userMes = await UserService.getUserById(ctx.request.body.studentId);
     const password = md5Password(user.password);
 
-
-
-    // 没有token情况
     if (userMes[0].length && userMes[0][0].password === password) {
+      const token = jwt.sign(
+        { id: userMes[0][0].id, studentId: userMes[0][0].studentId },
+        'secret_key', // 替换为安全的密钥
+        { expiresIn: '1h' }
+      );
+      // 设置token到cookie中
+      ctx.cookies.set('token', token, {
+        httpOnly: true,
+        maxAge: 60 * 60 * 1000, // 1小时
+        secure: false,
+        sameSite: "strict" // 设置为strict，防止CSRF攻击
+      });
       ctx.body = {
         code: 200,
         message: '登录成功',
-        data: userMes[0][0]
-      }
-    } else if(!userMes[0].length){
+        data: { user: userMes[0][0], token }
+      };
+    } else if (!userMes[0].length) {
       ctx.body = {
         code: 500,
         message: '用户不存在'
-      }
+      };
     } else {
       ctx.body = {
         code: 500,
         message: '密码错误'
-      }
+      };
     }
   }
 }
