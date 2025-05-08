@@ -5,6 +5,7 @@ import Image from 'next/image';
 import styles from './index.module.scss';
 // TODO：临时解决办法
 import bookImage from "@/assets/img/book.jpg";
+import { useRouter } from 'next/navigation';
 
 export interface IProp{
   id: number, // 图书编号
@@ -23,7 +24,10 @@ const Index: React.FC<IProp> = (props) => {
   const { id, title, author, publisher, description, price, rest, category, img, type } = props;
   const [ifShowDetail, setIfShowDetail] = useState(false);
   const stateString = type ? '归还' : '借阅';
-
+  const router = useRouter();
+  const handleClick = (id, type) => { 
+    router.push(`/actioncenter?id=${id}&type=${type}`);
+  }
   return (
     <div>
       <div className={styles.bookSection}>
@@ -42,7 +46,7 @@ const Index: React.FC<IProp> = (props) => {
         </div>
         {ifShowDetail && (
           <ul className={styles.right}>
-            <li className={styles.name}>{ `点击${stateString}`}</li>
+            <li className={styles.name} onClick={() => handleClick(id, type)}>{ `点击${stateString}`}</li>
             <li>作者： {author}</li>
             <li>分类：{category}</li>
             <li>出版社： {publisher}</li>

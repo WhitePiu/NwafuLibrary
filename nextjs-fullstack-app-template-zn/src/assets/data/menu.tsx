@@ -15,7 +15,7 @@ export const menuListData: MenuItem[] = [
     ],
   },
   {
-    key: 'sub5',
+    key: 'borrowHistory',
     label: '借阅历史',
     icon: <SettingOutlined />,
   },

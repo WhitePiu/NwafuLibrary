@@ -6,7 +6,8 @@ import bgimage from '@/assets/img/tushuguan.jpg'
 import { Form, Input, Checkbox, Button } from 'antd'
 import type { FormProps } from 'antd'
 import initUser from '@/assets/data/login/users.json'
-import axios from 'axios'
+import axios from '@/app/server/axiosInstance'
+import { ContainerWithChildren } from 'postcss/lib/container'
 
 type FieldType = {
   studentId: string;
@@ -27,7 +28,8 @@ export default function page() {
       data: {
         studentId,
         password
-      }
+      },
+      withCredentials: true,
     })
 
     const {data} = await response;

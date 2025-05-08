@@ -1,11 +1,12 @@
 const connection = require('../app/database')
+const generateToken = require("../utils/generateToken")
 
 class UserService{
   async save(user) {
     // 处理数据库操作
-    const { name, password, studentId } = user
-    const statement = `INSERT INTO user (name, password, studentId) VALUES (?, ?, ?)`
-    const result = await connection.execute(statement, [name, password, studentId])
+    const { name, password, studentId, token } = user
+    const statement = `INSERT INTO user (name, password, studentId, token) VALUES (?, ?, ?, ?)`
+    const result = await connection.execute(statement, [name, password, studentId, token])
     
     return result;
   }

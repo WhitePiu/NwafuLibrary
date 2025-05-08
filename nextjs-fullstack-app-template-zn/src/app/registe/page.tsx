@@ -4,7 +4,7 @@ import React from 'react'
 import styles from './page.module.scss'
 import { useRouter } from 'next/navigation'
 import { Input, Form, Button} from 'antd'
-import axios from 'axios'
+import axios from '@/app/server/axiosInstance'
 
 export default function page() {
   const router = useRouter()
@@ -12,7 +12,7 @@ export default function page() {
     const { studentId, name, password } = values
 
     // TODO: 注册逻辑
-    axios({ method: 'post', url: 'http://localhost:8080/user/register', data: { studentId, name, password } }).then((res) => {
+    axios({ method: 'post', url: 'http://localhost:8080/user/register', data: { studentId, name, password },withCredentials: true }).then((res) => {
       const { data } = res;
       if (data.code === 200) {
         router.push('/login');

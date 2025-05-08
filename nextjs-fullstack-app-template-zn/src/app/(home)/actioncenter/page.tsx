@@ -1,6 +1,6 @@
 'use client'
 
-import axios from "axios";
+import axios from "@/app/server/axiosInstance";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./page.module.scss";
@@ -28,7 +28,7 @@ export interface IBookDetail {
   publisher: string, // 出版社
   img: string // TODO: 封面图片
   category: string, // 分类
-  type: string // TODO: 是否正在借阅1
+  type: number // TODO: 是否正在借阅1
   borrowDate: string // TODO: 借阅日期,格式为YYYY-MM-DD,如果没有借阅则为空
   returnDate: string // TODO: 应还日期,格式为YYYY-MM-DD,如果没有借阅则为空
   rest: string // TODO: 库存数量
@@ -36,18 +36,19 @@ export interface IBookDetail {
   badNum: string // TODO: 点踩数
 }
 
+const studentId = "123456"
 export default function Page(props: IProps) {
   const { searchParams: { id } } = props;
   const [bookdetail, setBookdetail] = useState<IBookDetail>({});
-
+  const [dateRange, setDateRange] = useState<[Dayjs, Dayjs] | null>(null);
   // TODO: 发请求获取id书籍的详细数据
   useEffect(() => {
-      axios.get(`/api/bookdetail?id=${id}`).then((res) => {
-        setBookdetail(res.data)
+      axios.post(`http://localhost:8080/books/search`, { id }).then((res) => {
+        setBookdetail(res.data.booklist)
       }).catch((err) => {
         console.log(err)
       })
-  },[])
+  },[id])
 
     const disabled2MonthsDate: DatePickerProps['disabledDate'] = (current, { from, type }) => {
     if (from) {
@@ -68,6 +69,19 @@ export default function Page(props: IProps) {
 
     return false;
   };
+  const handleBorrow = () => {
+    if (!dateRange) {
+      alert("请先选择日期");
+      return;
+    }
+    const borrowDate = dateRange[0].format("YYYY-MM-DD");
+    const returnDate = dateRange[1].format("YYYY-MM-DD");
+    axios.post(`http://localhost:8080/books/borrow`, { id, studentId, borrowDate, returnDate }).then((res) => {
+      
+    }).catch(() => {
+      alert("借阅失败，请稍后再试");
+    })
+  }
   const renderBorrow = () => {
     return (
       <div className={styles.borrow}>
@@ -75,20 +89,35 @@ export default function Page(props: IProps) {
         <Space direction="vertical">
           <div>借阅书籍名称： {bookdetail.title}</div>
           <div>
-            <RangePicker placeholder={["借阅日期", "归还日期"]} size="large" disabledDate={disabled2MonthsDate}></RangePicker>
+            <RangePicker placeholder={["借阅日期", "归还日期"]} size="large" disabledDate={disabled2MonthsDate} onChange={(dates) => {setDateRange(dates)} }></RangePicker>
           </div>
+          <button onClick={handleBorrow}>确定借阅</button>
         </Space>
       </div>
     )
   }
+  const handleReturn = () => {
+    axios.post(`http://localhost:8080/books/return`, { id }).then((res) => {
+      if (res.data.code === 200) {
+        setBookdetail({...bookdetail, type: 0})
+      } else {
+        alert("归还失败，请稍后再试")
+      }
+    }).catch(() => {
+    });
+  }
 
   const renderReturn = () => {
     return (
-      <div className={styles.return}>
+      <div className={`${styles.return} ${styles.styledReturn}`}>
         <header className={styles.returnHeader}>归还登记</header>
+        <div className={styles.returnContent}>
+          <div className={styles.returnBookName}>归还书籍名称：<span>{ bookdetail.title}</span></div>
+          <button className={styles.returnButton} onClick={handleReturn}>确定归还</button>
+        </div>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <div>
@@ -119,7 +148,7 @@ export default function Page(props: IProps) {
         </div>
       </div>
       <section>
-        {renderBorrow()}
+        {bookdetail.type === 1 ? renderReturn() : renderBorrow()}
       </section>
     </div>
 

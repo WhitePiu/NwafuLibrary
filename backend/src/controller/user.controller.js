@@ -1,5 +1,6 @@
 const UserService = require('../service/user.service');
 const md5Password = require('../utils/md5-password');
+const generateToken = require('../utils/generateToken');
 const jwt = require('jsonwebtoken');
 
 class UserController{
@@ -23,7 +24,17 @@ class UserController{
       }
       return;
     }
+
+    //
+    const token = generateToken(user.studentId, user.password);
+    ctx.request.body.token = token;    
     const result = await UserService.save(ctx.request.body);
+    ctx.cookies.set('token', token, {
+      maxAge: 60 * 60 * 1000, // 1小时
+      httpOnly: false, 
+      secure: false, // 是否只在https下使用
+      sameSite: 'strict' // 设置为strict，防止CSRF攻击
+    });
     ctx.body = {
       code: 200,
       message: '创建成功',
@@ -33,19 +44,35 @@ class UserController{
 
   async login(ctx, next) {
     // 处理user借口逻辑
+    const token = ctx.cookies.get('token');
+    if (token) { 
+      try {
+        const decoded = jwt.verify(token, 'secret_key'); // 替换为安全的密钥
+        ctx.body = {
+          code: 200,
+          message: '登录成功',
+          data: decoded
+        };
+        return;
+      } catch (error) {
+        ctx.body = {
+          code: 500,
+          message: 'token验证失败'
+        }
+        return;
+      }
+    }
+
     const user = ctx.request.body;
-    const userMes = await UserService.getUserById(ctx.request.body.studentId);
-    const password = md5Password(user.password);
+    const { studentId, password: ps } = user;
+    const userMes = await UserService.getUserById(studentId);
+    const password = md5Password(ps);
 
     if (userMes[0].length && userMes[0][0].password === password) {
-      const token = jwt.sign(
-        { id: userMes[0][0].id, studentId: userMes[0][0].studentId },
-        'secret_key', // 替换为安全的密钥
-        { expiresIn: '1h' }
-      );
+      const token = generateToken(userMes[0][0],studentId, password);
       // 设置token到cookie中
       ctx.cookies.set('token', token, {
-        httpOnly: true,
+        httpOnly: false,
         maxAge: 60 * 60 * 1000, // 1小时
         secure: false,
         sameSite: "strict" // 设置为strict，防止CSRF攻击

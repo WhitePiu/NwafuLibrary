@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import axios from "axios"
 import NwaIco from '@/assets/img/xiaohui.jpg'
 import { Button, ConfigProvider, Timeline} from "antd"
 
